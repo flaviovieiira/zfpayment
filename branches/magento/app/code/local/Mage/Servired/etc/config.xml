@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<config>
+    <global>
+<!-- declare model group for new module -->
+        <models>
+<!-- model group alias to be used in Mage::getModel('newmodule/...') -->
+            <servired>
+<!-- base class name for the model group -->
+                <class>Mage_Servired_Model</class>
+            </servired>
+        </models>
+ 
+<!-- declare resource setup for new module -->
+        <resources>
+<!-- resource identifier -->
+            <servired_setup>
+<!-- specify that this resource is a setup resource and used for upgrades -->
+                <setup>
+<!-- which module to look for install/upgrade files in -->
+                    <module>Mage_Servired</module>
+                </setup>
+<!-- specify database connection for this resource -->
+                <connection>
+<!-- do not create new connection, use predefined core setup connection -->
+                    <use>core_setup</use>
+                </connection>
+            </servired_setup>
+            <servired_write>
+                <use>core_write</use>
+            </servired_write>
+            <servired_read>
+                <use>core_read</use>
+            </servired_read>
+        </resources>
+    </global>
+ 
+<!-- declare default configuration values for this module -->
+    <default>
+<!-- 'payment' configuration section (tab) -->
+        <payment>
+<!-- 'servired' configuration group (fieldset) -->
+            <servired>
+<!-- by default this payment method is inactive -->
+                <active>1</active>
+<!-- model to handle logic for this payment method -->
+                <model>servired/paymentMethod</model>
+<!-- order status for new orders paid by this payment method -->
+                <order_status>1</order_status>
+<!-- default title for payment checkout page and order view page -->
+                <title>Servired</title>
+                <urlok>http://www.my.website.com/payment/accepted</urlok>
+                <urlko>http://www.my.website.com/payment/denied</urlko>
+                <key></key>
+                <url>https://sis.sermepa.es/sis/realizarPago</url>
+                <currency>978</currency>
+                <merchantcode></merchantcode>
+                <merchantname>My Business Name</merchantname>
+                <merchanturl>http://www.my.website.com/payment/notify</merchanturl>
+                <terminal>001</terminal>
+                <consumerlanguage>001</consumerlanguage>
+            </servired>
+         </payment>
+    </default>
+</config>
